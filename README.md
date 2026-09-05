@@ -21,7 +21,8 @@ A beautiful, responsive Teacher’s Day digital card experience designed to cele
 🔗 Share-ready digital cards
 ⚡ Lightweight frontend implementation
 🖥️ Preview
-<p align="center"> <img src="./reference.png" alt="Teacher's Day Website Preview" width="100%"> </p>
+<p align="center"> <img src="<img width="332" height="659" alt="image" src="https://github.com/user-attachments/assets/e0d239b5-8eeb-45db-91d4-72db5e8dcc8a" />
+" alt="Teacher's Day Website Preview" width="100%"> </p>
 🎨 Design
 
 The interface follows a soft, emotional Teacher’s Day aesthetic featuring:
