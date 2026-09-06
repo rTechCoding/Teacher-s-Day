@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Teacher's Day • 5D Celebration Studio</title>
+  <meta name="description" content="A beautiful interactive Teacher's Day 5D animated card creator and full site customization studio by rTechCoding.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Poppins:wght@400;600;700&family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,600&family=Pacifico&family=Cinzel:wght@600;800&family=Fredoka:wght@500;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/audio.css">
+  <link rel="stylesheet" href="css/games.css">
+  <link rel="stylesheet" href="css/security.css">
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- 1. Background Animation Canvas & Overlay   -->
+  <!-- ========================================== -->
+  <canvas id="bgAnimCanvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:1;"></canvas>
+
+  <!-- Fixed Right-Side Action Icon Button Tab (Click to Slide & Show Drawer) -->
+  <button class="style-switcher-toggle" id="styleSwitcherToggle" title="Click to Open Style Switcher Drawer">
+    <span class="gear-spin">⚙️</span>
+    <span class="toggle-text">STYLE</span>
+  </button>
+
+  <!-- Backdrop Blur Drawer Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- ========================================== -->
+  <!-- 2. Header & Navigation Bar                 -->
+  <!-- ========================================== -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#home">
+        <span class="logo-heart">💗</span> Teacher's Day
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#games">Games</a>
+        <a href="#messages">Messages</a>
+        <a href="#customize">Customize</a>
+      </div>
+      
+      <div class="nav-controls">
+        <!-- Navbar Language Dropdown Switcher -->
+        <div class="lang-dropdown-wrapper" id="langDropdownWrapper">
+          <button class="lang-btn" id="langSelectBtn" title="Change Language / भाषा चुनें">
+            <span class="lang-flag" id="currentLangFlag">🇬🇧</span>
+            <span class="lang-code" id="currentLangCode">EN</span>
+            <span class="lang-arrow">▾</span>
+          </button>
+          <div class="lang-dropdown-menu" id="langDropdownMenu">
+            <div class="lang-option active" data-lang="en" data-flag="🇬🇧" data-code="EN">
+              <span><span class="flag">🇬🇧</span> English</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="lang-option" data-lang="hi" data-flag="🇮🇳" data-code="HI">
+              <span><span class="flag">🇮🇳</span> हिन्दी</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="lang-option" data-lang="es" data-flag="🇪🇸" data-code="ES">
+              <span><span class="flag">🇪🇸</span> Español</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="lang-option" data-lang="fr" data-flag="🇫🇷" data-code="FR">
+              <span><span class="flag">🇫🇷</span> Français</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="lang-option" data-lang="de" data-flag="🇩🇪" data-code="DE">
+              <span><span class="flag">🇩🇪</span> Deutsch</span>
+              <span class="check-icon">✓</span>
+            </div>
+            <div class="lang-option" data-lang="tr" data-flag="🇹🇷" data-code="TR">
+              <span><span class="flag">🇹🇷</span> Türkçe</span>
+              <span class="check-icon">✓</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme" style="display:none;">🌙</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">☰</button>
+        <a href="#customize" class="btn" style="padding:10px 18px;font-size:13px;display:none;">Create Card</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- 3. Hero Section                            -->
+  <!-- ========================================== -->
+  <header id="home" class="hero">
+    <div class="floaters">
+      <span>💗</span><span>⭐</span><span>✨</span><span>💜</span>
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <div class="script">Happy</div>
+        <h1><span>TEACHER'S<br>DAY</span></h1>
+        <p>A teacher takes a hand, opens a mind, and touches a heart forever. Celebrate your amazing mentors today! 💗</p>
+        <div class="actions">
+          <a href="#customize" class="btn">Create Your Card ✨</a>
+          <a href="#about" class="btn ghost">Learn More →</a>
+        </div>
+      </div>
+      <div class="hero-scene reveal">
+        <div class="room-card">
+          <img src="assets/hero_teacher_scene.jpg" alt="Teacher's Day 3D Classroom Scene">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 4. Quick Features Bar                      -->
+  <!-- ========================================== -->
+  <section class="features">
+    <div class="container feature-grid">
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <div><b>Beautiful Cards</b><small>Stunning 5D animated designs</small></div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✏️</div>
+        <div><b>Easy Customization</b><small>Personalize with messages & photos</small></div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">↗</div>
+        <div><b>Share Instantly</b><small>Save your card and spread joy</small></div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">♡</div>
+        <div><b>100% Free</b><small>Create and share completely free</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. About Teacher's Day Section             -->
+  <!-- ========================================== -->
+  <section id="about" class="section about">
+    <div class="container about-grid">
+      <div class="reveal">
+        <span class="section-tag">About Teacher's Day</span>
+        <h2>Honoring the<br>Guides of Our Lives</h2>
+        <p>Teacher's Day is a special occasion to express heartfelt gratitude to the wonderful educators who illuminate our paths with knowledge, patience, and unwavering encouragement.</p>
+        <div class="stats">
+          <div class="stat"><strong>5M+</strong><span>Cards Created</span></div>
+          <div class="stat"><strong>1M+</strong><span>Happy Teachers</span></div>
+          <div class="stat"><strong>100+</strong><span>Countries</span></div>
+        </div>
+        <a class="btn" href="#customize">Create Your Card</a>
+      </div>
+      <div class="about-art-wrapper reveal">
+        <div class="about-art-card">
+          <img src="assets/about_teacher_male.jpg" alt="3D Male Teacher Artwork">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. Card Design Gallery Section             -->
+  <!-- ========================================== -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="gallery-head reveal">
+        <span class="section-tag">Gallery</span>
+        <h2>Beautiful Teacher's Day Cards</h2>
+        <p>Explore our collection of whimsical, 3D animated, and heartfelt greeting card designs.</p>
+      </div>
+      <div class="gallery-wrapper reveal">
+        <button class="carousel-btn left" id="prevGallery" aria-label="Previous">‹</button>
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="card" data-title="Happy Teacher's Day" data-img="assets/gallery_card_1.jpg">
+            <img src="assets/gallery_card_1.jpg" alt="Happy Teacher's Day Card">
+            <div class="play">▶</div>
+            <div class="caption">Happy Teacher's Day</div>
+          </div>
+          <div class="card" data-title="Thank You Teacher" data-img="assets/gallery_card_2.jpg">
+            <img src="assets/gallery_card_2.jpg" alt="Thank You Teacher Card">
+            <div class="play">▶</div>
+            <div class="caption">Thank You Teacher</div>
+          </div>
+          <div class="card" data-title="You Are The Best" data-img="assets/gallery_card_3.jpg">
+            <img src="assets/gallery_card_3.jpg" alt="You Are The Best Card">
+            <div class="play">▶</div>
+            <div class="caption">You Are The Best</div>
+          </div>
+          <div class="card" data-title="A Special Mentor" data-img="assets/gallery_card_4.jpg">
+            <img src="assets/gallery_card_4.jpg" alt="A Special Mentor Card">
+            <div class="play">▶</div>
+            <div class="caption">A Special Mentor</div>
+          </div>
+          <div class="card" data-title="Inspiring Guidance" data-img="assets/cta_teacher_wave.jpg">
+            <img src="assets/cta_teacher_wave.jpg" alt="Inspiring Guidance Card">
+            <div class="play">▶</div>
+            <div class="caption">Inspiring Guidance</div>
+          </div>
+          <div class="card" data-title="Heartfelt Gratitude" data-img="assets/cta_gift_box.jpg">
+            <img src="assets/cta_gift_box.jpg" alt="Heartfelt Gratitude Card">
+            <div class="play">▶</div>
+            <div class="caption">Heartfelt Gratitude</div>
+          </div>
+        </div>
+        <button class="carousel-btn right" id="nextGallery" aria-label="Next">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6b. Interactive Math Arcade Games Section  -->
+  <!-- ========================================== -->
+  <section id="games" class="section games-section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="section-tag">🧠 Brain Workout</span>
+        <h2>Interactive Math Games Arcade 🎮</h2>
+        <p>Challenge your brain with fun mathematics puzzles! Solve arithmetic operator equations or slide tiles to arrange numbers in order.</p>
+      </div>
+
+      <!-- Game Selector Navigation Bar -->
+      <div class="games-tab-bar reveal">
+        <button type="button" class="game-tab-btn active" data-game="game-arithmetic">
+          <span>🧮 Game 1: Arithmetic Chain</span>
+        </button>
+        <button type="button" class="game-tab-btn" data-game="game-sliding">
+          <span>🧩 Game 2: Sliding Math Puzzle</span>
+        </button>
+      </div>
+
+      <!-- GAME 1 CONTAINER: ARITHMETIC CHAIN -->
+      <div id="game-arithmetic" class="game-card-wrapper reveal">
+        <!-- Arcade Top Header Bar -->
+        <div class="game-top-bar">
+          <div class="game-stats-list">
+            <div class="stat-item"><span class="stat-lbl">SCORE</span><span class="stat-val" id="arithScore">0</span></div>
+            <div class="stat-item"><span class="stat-lbl">BEST</span><span class="stat-val" id="arithBest">200</span></div>
+            <div class="stat-item"><span class="stat-lbl">TIME</span><span class="stat-val" id="arithTime">0:00</span></div>
+            <div class="stat-item"><span class="stat-lbl">SOLVED</span><span class="stat-val" id="arithSolved">0</span></div>
+            <div class="stat-item"><span class="stat-lbl">STREAK</span><span class="stat-val" id="arithStreak">0</span></div>
+            <div class="stat-item"><span class="stat-lbl">HINTS</span><span class="stat-val" id="arithHints">3</span></div>
+          </div>
+          <div class="game-action-bar">
+            <div class="streak-badge" id="arithStreakBadge" title="Current Streak">🔥 <span id="arithStreakCount">0</span></div>
+            <button class="arcade-icon-btn" id="arithSoundBtn" title="Toggle Sound">🔊</button>
+            <button class="arcade-icon-btn" id="arithPauseBtn" title="Pause Game">⏸️</button>
+            <button class="arcade-icon-btn" id="arithResetBtn" title="Reset Game">🔄</button>
+            <button class="arcade-icon-btn" id="arithFullscreenBtn" title="Toggle Fullscreen">⛶</button>
+          </div>
+        </div>
+
+        <!-- Arcade Sub Header & Difficulty Selector -->
+        <div class="game-sub-bar">
+          <div class="diff-badge-group">
+            <span class="badge-title">ARITHMETIC CHAIN</span>
+            <div class="diff-btn-group">
+              <button class="diff-btn active" data-diff="easy">EASY</button>
+              <button class="diff-btn" data-diff="medium">MEDIUM</button>
+              <button class="diff-btn" data-diff="hard">HARD</button>
+            </div>
+          </div>
+          <button class="hint-action-btn" id="arithHintBtn">HINT (<span id="arithHintCount">3</span>)</button>
+        </div>
+
+        <!-- Main Equation Stage -->
+        <div class="equation-stage-box">
+          <div class="equation-instruction">FILL IN THE OPERATORS TO MAKE THE EQUATION TRUE</div>
+          <div class="target-result-badge">Result = <span id="arithTargetVal">14</span></div>
+
+          <div class="equation-row" id="arithEquationRow">
+            <!-- Dynamically rendered equation items -->
+          </div>
+
+          <div class="operator-prompt">CHOOSE OPERATOR FOR BLANK <span id="arithBlankIndex">1</span>:</div>
+          <div class="operator-choices-grid">
+            <button class="op-choice-btn" data-op="+">+</button>
+            <button class="op-choice-btn" data-op="-">-</button>
+            <button class="op-choice-btn" data-op="*">×</button>
+            <button class="op-choice-btn" data-op="/">÷</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAME 2 CONTAINER: SLIDING NUMBER TILE PUZZLE -->
+      <div id="game-sliding" class="game-card-wrapper reveal" style="display:none;">
+        <!-- Arcade Top Header Bar -->
+        <div class="game-top-bar">
+          <div class="game-stats-list">
+            <div class="stat-item"><span class="stat-lbl">MOVES</span><span class="stat-val" id="slideMoves">0</span></div>
+            <div class="stat-item"><span class="stat-lbl">TIME</span><span class="stat-val" id="slideTime">00:00</span></div>
+          </div>
+          <div class="game-action-bar">
+            <div class="streak-badge" id="slideStreakBadge" title="Streak">🔥 <span id="slideStreakCount">1</span></div>
+            <button class="arcade-icon-btn" id="slideSoundBtn" title="Toggle Sound">🔊</button>
+            <button class="arcade-icon-btn" id="slidePauseBtn" title="Pause Game">⏸️</button>
+            <button class="arcade-icon-btn" id="slideResetBtn" title="Reset Game">🔄</button>
+            <button class="arcade-icon-btn" id="slideFullscreenBtn" title="Toggle Fullscreen">⛶</button>
+          </div>
+        </div>
+
+        <!-- Arcade Sub Controls Bar -->
+        <div class="game-sub-bar slide-controls-bar">
+          <div class="size-btn-group">
+            <button class="grid-size-btn" data-size="3">3X3</button>
+            <button class="grid-size-btn active" data-size="4">4X4</button>
+            <button class="grid-size-btn" data-size="5">5X5</button>
+          </div>
+          <button class="toggle-num-btn active" id="slideToggleNumBtn">NUMBERS ON</button>
+          <button class="new-game-btn" id="slideNewGameBtn">NEW GAME</button>
+        </div>
+
+        <!-- Sliding Puzzle Stage Container -->
+        <div class="sliding-stage-box">
+          <div class="sliding-grid-wrap" id="slidingGrid">
+            <!-- Sliding Tiles generated dynamically -->
+          </div>
+          <div class="sliding-goal-caption">
+            Goal: arrange tiles <b id="slideGoalRange">1 → 15</b> with empty space bottom-right
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. Card Creator & 5D Customization Studio   -->
+  <!-- ========================================== -->
+  <section id="customize" class="section customize">
+    <div class="container custom-grid">
+      <div class="custom-copy reveal">
+        <span class="section-tag">Site & Card Studio</span>
+        <h2>Customize Everything Live!</h2>
+        <p>Personalize the entire website & card design in real time! Change text, colors, upload your own images for the hero section or card, and export high-res PNGs.</p>
+
+        <!-- Customizer Navigation Tabs -->
+        <div class="studio-tabs">
+          <button class="tab-btn active" data-tab="tab-card">💌 Card Customizer</button>
+          <button class="tab-btn" data-tab="tab-navbar">🧭 Top Bar</button>
+          <button class="tab-btn" data-tab="tab-hero">🚀 Hero Section</button>
+          <button class="tab-btn" data-tab="tab-features">⚡ Features Bar</button>
+          <button class="tab-btn" data-tab="tab-about">📖 About & Stats</button>
+          <button class="tab-btn" data-tab="tab-gallery">🖼️ Gallery Text</button>
+          <button class="tab-btn" data-tab="tab-messages">💬 Quotes & Testimonials</button>
+          <button class="tab-btn" data-tab="tab-cta">📣 CTA Banner</button>
+          <button class="tab-btn" data-tab="tab-style">🎨 Site Theme</button>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon">✨</div>
+            <div><b>Instant Live Updates</b><small>Left box shows real-time section preview</small></div>
+          </div>
+          <div class="step">
+            <div class="step-icon">💾</div>
+            <div><b>Apply & Preview Changes</b><small>Click button to preview full section popup</small></div>
+          </div>
+        </div>
+        <button class="btn" id="demoBtn">Start Customizing ✨</button>
+      </div>
+      
+      <div class="editor reveal">
+        <!-- Left Side Dynamic Section Preview Container -->
+        <div>
+          <div class="preview-toolbar">
+            <button class="toolbar-btn" id="tbHomeBtn" title="Back to Home">←</button>
+            <button class="toolbar-btn" id="tbTextBtn" title="Edit Card Text">T</button>
+            <button class="toolbar-btn" id="tbPhotoBtn" title="Upload Image">🖼️</button>
+            <button class="toolbar-btn" id="tbFitBtn" title="Adjust Image Size & Position">⛶</button>
+            <button class="toolbar-btn" id="tbStyleBtn" title="Open Style Switcher">⚙️</button>
+          </div>
+
+          <div class="preview-card-wrap" id="previewWrap">
+            
+            <!-- View 1: Live Card Preview -->
+            <div id="previewCardView" class="studio-preview-view">
+              <div id="avatarBox" class="card-teacher-avatar">🧑‍🏫</div>
+              <div class="preview-inner">
+                <div class="preview-tag draggable-card-text" data-text-id="tag">With Gratitude</div>
+                <h3 id="pTitle" class="draggable-card-text" data-text-id="title">Happy Teacher's Day, Ms. Sharma!</h3>
+                <p class="msg-text draggable-card-text" id="pMsg" data-text-id="msg">Thank you for inspiring me, believing in me, and helping me grow every single day!</p>
+                <div class="from draggable-card-text" id="pFrom" data-text-id="from">— Rahul</div>
+                <!-- Container for User Added Custom Text Blocks -->
+                <div id="customTextBlocksContainer"></div>
+              </div>
+              <div class="editor-actions">
+                <button class="mini-btn" id="downloadBtn">💾 Download PNG</button>
+              </div>
+            </div>
+
+            <!-- View 2: Live Hero Section Preview -->
+            <div id="previewHeroView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">🚀 Hero Section Preview</div>
+              <div class="preview-inner" style="text-align:center;">
+                <div class="script" id="miniHeroScript" style="font-size:36px; color:var(--ink);">Happy</div>
+                <h3 id="miniHeroTitle" style="font-size:28px; color:var(--purple); line-height:1; margin:6px 0 10px;">TEACHER'S<br>DAY</h3>
+                <p id="miniHeroSubtext" style="font-size:12px; color:var(--p-color); max-width:280px; margin:0 auto 12px;">A teacher takes a hand, opens a mind, and touches a heart forever. Celebrate your amazing mentors today! 💗</p>
+                <div style="border-radius:18px; overflow:hidden; border:3px solid var(--bg-card); box-shadow:0 8px 24px rgba(0,0,0,0.12); margin-top:8px;">
+                  <img id="miniHeroImg" src="assets/hero_teacher_scene.jpg" alt="Mini Hero Preview" style="width:100%; height:130px; object-fit:cover; display:block;">
+                </div>
+              </div>
+            </div>
+
+            <!-- View 3: Live Features Bar Preview -->
+            <div id="previewFeaturesView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">⚡ Features Bar Preview</div>
+              <div class="preview-inner" style="text-align:center;">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+                  <div style="background:var(--bg-soft); padding:10px; border-radius:14px; border:1px solid var(--line);">
+                    <div style="font-size:24px; margin-bottom:4px;" id="miniFeat1Icon">🎨</div>
+                    <b style="font-size:12px; display:block; color:var(--purple);" id="miniFeat1Title">Beautiful Cards</b>
+                    <small style="font-size:10px; color:var(--p-color);" id="miniFeat1Desc">Stunning 5D animated designs</small>
+                  </div>
+                  <div style="background:var(--bg-soft); padding:10px; border-radius:14px; border:1px solid var(--line);">
+                    <div style="font-size:24px; margin-bottom:4px;" id="miniFeat2Icon">✏️</div>
+                    <b style="font-size:12px; display:block; color:var(--purple);" id="miniFeat2Title">Easy Customization</b>
+                    <small style="font-size:10px; color:var(--p-color);" id="miniFeat2Desc">Personalize with messages</small>
+                  </div>
+                  <div style="background:var(--bg-soft); padding:10px; border-radius:14px; border:1px solid var(--line);">
+                    <div style="font-size:24px; margin-bottom:4px;" id="miniFeat3Icon">↗</div>
+                    <b style="font-size:12px; display:block; color:var(--purple);" id="miniFeat3Title">Share Instantly</b>
+                    <small style="font-size:10px; color:var(--p-color);" id="miniFeat3Desc">Save your card and spread joy</small>
+                  </div>
+                  <div style="background:var(--bg-soft); padding:10px; border-radius:14px; border:1px solid var(--line);">
+                    <div style="font-size:24px; margin-bottom:4px;" id="miniFeat4Icon">♡</div>
+                    <b style="font-size:12px; display:block; color:var(--purple);" id="miniFeat4Title">100% Free</b>
+                    <small style="font-size:10px; color:var(--p-color);" id="miniFeat4Desc">Create completely free</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View 4: Live About Section Preview -->
+            <div id="previewAboutView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">📖 About Section Preview</div>
+              <div class="preview-inner" style="text-align:center;">
+                <h3 id="miniAboutHeading" style="font-size:24px; color:var(--purple); line-height:1.1; margin:10px 0;">Honoring the Guides<br>of Our Lives</h3>
+                <p id="miniAboutDesc" style="font-size:12px; color:var(--p-color); max-width:280px; margin:0 auto 14px;">Teacher's Day is a special occasion to express heartfelt gratitude to educators.</p>
+                <div style="border-radius:16px; overflow:hidden; border:3px solid var(--bg-card); box-shadow:0 8px 24px rgba(0,0,0,0.12); margin-bottom:14px;">
+                  <img id="miniAboutImg" src="assets/about_teacher_male.jpg" alt="Mini About Preview" style="width:100%; height:130px; object-fit:cover; display:block;">
+                </div>
+                <div style="display:flex; justify-content:space-around; background:var(--bg-soft); padding:12px; border-radius:16px; border:1px solid var(--line);">
+                  <div><strong id="miniStat1" style="color:var(--purple); font-size:20px; font-family:'Baloo 2';">5M+</strong><br><small style="font-size:10px; color:var(--p-color);">Cards Created</small></div>
+                  <div><strong id="miniStat2" style="color:var(--purple); font-size:20px; font-family:'Baloo 2';">1M+</strong><br><small style="font-size:10px; color:var(--p-color);">Happy Teachers</small></div>
+                  <div><strong id="miniStat3" style="color:var(--purple); font-size:20px; font-family:'Baloo 2';">100+</strong><br><small style="font-size:10px; color:var(--p-color);">Countries</small></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View 5: Live Gallery Preview -->
+            <div id="previewGalleryView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">🖼️ Gallery Headings Preview</div>
+              <div class="preview-inner" style="text-align:center;">
+                <span id="miniGalleryTag" class="section-tag" style="display:inline-block; margin-bottom:6px;">Gallery</span>
+                <h3 id="miniGalleryHeading" style="font-size:24px; color:var(--purple); margin-bottom:8px;">Beautiful Teacher's Day Cards</h3>
+                <p id="miniGallerySub" style="font-size:12px; color:var(--p-color); max-width:280px; margin:0 auto 12px;">Explore our collection of whimsical, 3D animated greeting card designs.</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                  <div style="background:var(--bg-soft); border-radius:12px; padding:16px; border:1px solid var(--line); font-size:24px;">👩‍🏫🌷</div>
+                  <div style="background:var(--bg-soft); border-radius:12px; padding:16px; border:1px solid var(--line); font-size:24px;">📚💐</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View 6: Live Quotes Preview -->
+            <div id="previewMessagesView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">💬 Quotes Section Preview</div>
+              <div class="preview-inner" style="text-align:center;">
+                <span id="miniMsgTag" class="section-tag" style="display:inline-block; margin-bottom:6px;">Testimonials</span>
+                <h3 id="miniMsgHeading" style="font-size:22px; color:var(--purple); margin-bottom:12px;">What Students Say</h3>
+                <div style="background:var(--bg-soft); border-radius:16px; padding:14px; border:1px solid var(--line); text-align:left;">
+                  <p id="miniQuote1Text" style="font-size:11px; font-style:italic; color:var(--ink); margin-bottom:8px;">"This platform helped me create a beautiful card!"</p>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:18px;">👧</span>
+                    <div>
+                      <b id="miniQuote1Name" style="font-size:11px; display:block;">Priya Sharma</b>
+                      <small id="miniQuote1Role" style="font-size:9px; color:var(--p-color);">Student</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View 7: Live CTA Banner Preview -->
+            <div id="previewCtaView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">📣 CTA Banner Preview</div>
+              <div class="preview-inner" style="text-align:center;">
+                <div style="background:linear-gradient(135deg, var(--purple), #8e5cf6); padding:16px; border-radius:18px; color:#fff;">
+                  <h3 id="miniCtaTitle" style="font-size:20px; color:#fff; margin-bottom:6px;">Ready to Make Your Teacher Smile?</h3>
+                  <p id="miniCtaDesc" style="font-size:11px; opacity:0.9; margin-bottom:10px;">Create a beautiful, personalized card in just a few clicks!</p>
+                  <div style="border-radius:12px; overflow:hidden; border:2px solid rgba(255,255,255,0.4); margin-bottom:10px;">
+                    <img id="miniCtaImg" src="assets/cta_teacher_wave.jpg" alt="Mini CTA Artwork" style="width:100%; height:90px; object-fit:cover; display:block;">
+                  </div>
+                  <span id="miniCtaBtnText" style="display:inline-block; background:#fff; color:var(--purple); padding:6px 14px; border-radius:10px; font-weight:700; font-size:11px;">Create Your Card Now ✨</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- View 8: Live Theme Palette Preview -->
+            <div id="previewThemeView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">🎨 Site Theme Accent</div>
+              <div class="preview-inner" style="text-align:center;">
+                <div id="miniThemeCircle" style="width:74px; height:74px; border-radius:50%; background:var(--purple); margin:14px auto; box-shadow:0 8px 25px rgba(0,0,0,0.22); border:4px solid #fff;"></div>
+                <h3 style="font-size:24px; color:var(--purple); margin-bottom:8px;">Active Theme Color</h3>
+                <p style="font-size:12px; color:var(--p-color); max-width:260px; margin:0 auto;">This primary accent color updates all headings, buttons, tags, section highlights, and PNG exports in real time!</p>
+              </div>
+            </div>
+
+            <!-- View 9: Live Navbar Preview -->
+            <div id="previewNavbarView" class="studio-preview-view" style="display:none;">
+              <div class="preview-tag">🧭 Navigation Bar Preview</div>
+              <div class="preview-inner" style="text-align:center;">
+                <div style="background:var(--nav-bg); backdrop-filter:blur(10px); border-radius:16px; padding:14px; border:2px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,0.12);">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <div style="font-weight:700; color:var(--purple); font-size:16px;" id="miniNavLogo">
+                      <span id="miniNavLogoIcon">💗</span> <span id="miniNavLogoText">Teacher's Day</span>
+                    </div>
+                    <div style="font-size:11px; background:var(--bg-soft); padding:4px 10px; border-radius:8px; color:var(--p-color);" id="miniNavCurrentLang">🇬🇧 EN</div>
+                  </div>
+                  <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap; font-size:11px; color:var(--ink); font-weight:600;" id="miniNavLinks">
+                    <span class="mini-nav-item" id="miniNavLinkHome">Home</span> •
+                    <span class="mini-nav-item" id="miniNavLinkAbout">About</span> •
+                    <span class="mini-nav-item" id="miniNavLinkGallery">Gallery</span> •
+                    <span class="mini-nav-item" id="miniNavLinkMessages">Messages</span> •
+                    <span class="mini-nav-item" id="miniNavLinkCustomize">Customize</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+        <!-- Editor Form -->
+        <div class="form">
+          <!-- TAB 1: CARD CUSTOMIZER -->
+          <div class="tab-content active" id="tab-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <h4 style="color:var(--purple); font-size:16px; font-family:'Baloo 2', cursive; margin:0;">Customize Your Card</h4>
+              <span style="color:var(--p-color); font-size:18px; cursor:pointer;" title="Options">⋮</span>
+            </div>
+
+            <label for="cardTagInput">Card Tag / Subtitle Text</label>
+            <input type="text" id="cardTagInput" value="With Gratitude" placeholder="e.g. With Gratitude">
+
+            <label for="cardTitlePrefixInput">Card Main Heading Text</label>
+            <input type="text" id="cardTitlePrefixInput" value="Happy Teacher's Day" placeholder="e.g. Happy Teacher's Day">
+
+            <label for="teacherName">Teacher's Name</label>
+            <input type="text" id="teacherName" value="Ms. Sharma" placeholder="e.g. Ms. Sharma">
+
+            <label for="studentName">Your Name</label>
+            <input type="text" id="studentName" value="Rahul" placeholder="Your name">
+
+            <label for="message">Your Message</label>
+            <textarea id="message">Thank you for inspiring me, believing in me, and helping me grow every single day!</textarea>
+
+            <label>Card Text Drag & Fix Position (Drag text on card! 📍)</label>
+            <div style="display:flex; gap:8px; margin-bottom:12px; align-items:center;">
+              <button type="button" class="btn ghost" id="lockCardTextBtn" style="flex:1; padding:8px 12px; font-size:12px;" title="Lock or Unlock Text Dragging">
+                🔓 Dragging Enabled (Click to Lock)
+              </button>
+              <button type="button" class="btn ghost" id="resetCardTextPosBtn" style="padding:8px 12px; font-size:12px;" title="Reset all text offsets">
+                Reset 🔄
+              </button>
+            </div>
+
+            <label>Add Extra Custom Text / Sticker Block</label>
+            <div style="display:flex; gap:8px; margin-bottom:10px; align-items:center;">
+              <input type="text" id="newCustomTextInput" placeholder="e.g. Best Teacher Ever! ⭐" style="flex:1; margin-bottom:0; font-size:13px; padding:10px 12px;">
+              <button type="button" class="btn" id="addCustomTextBtn" style="padding:10px 14px; font-size:13px; white-space:nowrap;">
+                ➕ Add
+              </button>
+            </div>
+            <div id="customTextBlocksList" style="margin-bottom:14px;"></div>
+
+            <label>Card Background Template</label>
+            <div class="template-toggle-wrapper" style="margin-bottom:14px; position:relative;">
+              <button type="button" id="templateToggleBtn" class="template-toggle-bar" style="width:100%; display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-radius:12px; background:var(--bg-soft); border:2px solid var(--line); cursor:pointer; transition:all 0.2s ease;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span id="activeTplIcon" style="font-size:18px;">🌸</span>
+                  <span id="activeTplName" style="font-weight:700; color:var(--ink); font-size:13px;">Floral</span>
+                </div>
+                <span id="activeTplArrow" style="font-size:12px; color:var(--p-color); transition:transform 0.3s ease;">▼</span>
+              </button>
+
+              <div id="cardTemplateDropdown" class="card-template-dropdown" style="grid-template-columns:repeat(4, 1fr); gap:8px; margin-top:8px; padding:10px; background:var(--bg-card); border:2px solid var(--line); border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+                <button type="button" class="card-template-btn active" data-template="floral" title="Soft Floral Blossom">
+                  <span class="tpl-icon">🌸</span>
+                  <span class="tpl-name">Floral</span>
+                </button>
+                <button type="button" class="card-template-btn" data-template="scrapbook" title="Vintage Crumpled Paper & Sunflowers">
+                  <span class="tpl-icon">🌻</span>
+                  <span class="tpl-name">Vintage</span>
+                </button>
+                <button type="button" class="card-template-btn" data-template="gold" title="Royal Gold & Stars">
+                  <span class="tpl-icon">🌟</span>
+                  <span class="tpl-name">Royal Gold</span>
+                </button>
+                <button type="button" class="card-template-btn" data-template="chalk" title="Classroom Blackboard">
+                  <span class="tpl-icon">📝</span>
+                  <span class="tpl-name">Blackboard</span>
+                </button>
+                <button type="button" class="card-template-btn" data-template="sunset" title="Sunset Warmth">
+                  <span class="tpl-icon">🌅</span>
+                  <span class="tpl-name">Sunset</span>
+                </button>
+                <button type="button" class="card-template-btn" data-template="ocean" title="Ocean Sparkle">
+                  <span class="tpl-icon">🌊</span>
+                  <span class="tpl-name">Ocean</span>
+                </button>
+                <button type="button" class="card-template-btn" data-template="custom" title="Upload Custom Card Background Image">
+                  <span class="tpl-icon">🖼️</span>
+                  <span class="tpl-name">Custom Image</span>
+                </button>
+                <button type="button" class="card-template-btn" data-template="neon" title="Vibrant Neon Grid & Cyber Gradient">
+                  <span class="tpl-icon">🧙‍♂️</span>
+                  <span class="tpl-name">Neon Grid</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Custom Card Background Upload Box & Shape Tuning -->
+            <div id="customBgUploadBox" style="margin-bottom:14px; background:var(--bg-soft); padding:12px; border-radius:14px; border:1px solid var(--line);">
+              <label style="font-size:12px; font-weight:700; color:var(--purple); margin-bottom:6px; display:block;">Or Upload Custom Card Background Image</label>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <label class="upload" style="flex:1; margin-bottom:0; padding:8px 12px; font-size:12px; display:inline-flex; align-items:center; justify-content:center; gap:6px;">
+                  <span>🖼️ Choose Custom Background</span>
+                  <input type="file" id="cardBgPhotoInput" accept="image/*">
+                </label>
+                <button type="button" class="btn ghost" id="resetCardBgBtn" style="padding:8px 12px; font-size:12px;" title="Reset Custom Background">❌ Reset</button>
+              </div>
+              <div id="cardBgThumbnailBox" style="display:none; align-items:center; gap:10px; margin-top:8px; background:var(--bg-card); padding:6px 10px; border-radius:10px; border:1px solid var(--line);">
+                <img id="cardBgThumbnailImg" src="" style="width:36px; height:36px; border-radius:6px; object-fit:cover;">
+                <span style="font-size:11px; color:var(--p-color); font-weight:500;">Custom Background Active</span>
+              </div>
+
+              <!-- Card Corner Radius / Shape Selector -->
+              <label style="font-size:12px; font-weight:700; color:var(--purple); margin-top:12px; margin-bottom:6px; display:block;">Card Corner Radius / Shape</label>
+              <div class="card-radius-grid" style="display:grid; grid-template-columns:repeat(5, 1fr); gap:6px; margin-bottom:8px;">
+                <button type="button" class="radius-btn" data-radius="0" title="Square Corners (0px)">Square</button>
+                <button type="button" class="radius-btn" data-radius="12" title="Soft Corners (12px)">Soft</button>
+                <button type="button" class="radius-btn active" data-radius="22" title="Round Corners (22px Default)">Round</button>
+                <button type="button" class="radius-btn" data-radius="36" title="Pill Shaped (36px)">Pill</button>
+                <button type="button" class="radius-btn" data-radius="50" title="Oval / Ultra Round (50px)">Oval</button>
+              </div>
+
+              <!-- Toggle Custom Background Tuning Panel -->
+              <button type="button" class="btn ghost" id="openBgAdjustBtn" style="width:100%; font-size:12px; padding:8px 10px; margin-top:6px; display:flex; justify-content:space-between; align-items:center;">
+                <span>🛠️ Card Background Image Controls</span>
+                <span id="bgAdjustArrow" style="font-size:10px; transition:transform 0.3s ease;">▼</span>
+              </button>
+
+              <div id="bgControls" style="display:none; margin-top:10px; padding:12px; background:var(--bg-card); border-radius:12px; border:1px solid var(--line);">
+                <label style="font-size:11px; font-weight:700; color:var(--ink); margin-bottom:6px; display:block;">Fit Screen Mode</label>
+                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin-bottom:12px;">
+                  <button type="button" class="bg-fit-btn active" data-fit="cover" style="font-size:11px; padding:6px; border-radius:8px; border:1px solid var(--line); background:var(--bg-soft); cursor:pointer;">Cover</button>
+                  <button type="button" class="bg-fit-btn" data-fit="contain" style="font-size:11px; padding:6px; border-radius:8px; border:1px solid var(--line); background:var(--bg-soft); cursor:pointer;">Fit Screen</button>
+                  <button type="button" class="bg-fit-btn" data-fit="100% 100%" style="font-size:11px; padding:6px; border-radius:8px; border:1px solid var(--line); background:var(--bg-soft); cursor:pointer;">Stretch</button>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                  <label style="font-size:11px; font-weight:700; color:var(--ink); margin-bottom:0;">Background Zoom</label>
+                  <span id="bgZoomVal" style="font-size:11px; color:var(--purple); font-weight:700;">1.0x</span>
+                </div>
+                <input type="range" id="bgZoomSlider" min="0.5" max="2.5" step="0.05" value="1.0" style="width:100%; margin-bottom:10px;">
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                  <label style="font-size:11px; font-weight:700; color:var(--ink); margin-bottom:0;">Position X (Horizontal)</label>
+                  <span id="bgPosXVal" style="font-size:11px; color:var(--purple); font-weight:700;">0px</span>
+                </div>
+                <input type="range" id="bgPosXSlider" min="-100" max="100" step="2" value="0" style="width:100%; margin-bottom:10px;">
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                  <label style="font-size:11px; font-weight:700; color:var(--ink); margin-bottom:0;">Position Y (Vertical)</label>
+                  <span id="bgPosYVal" style="font-size:11px; color:var(--purple); font-weight:700;">0px</span>
+                </div>
+                <input type="range" id="bgPosYSlider" min="-100" max="100" step="2" value="0" style="width:100%; margin-bottom:10px;">
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                  <label style="font-size:11px; font-weight:700; color:var(--ink); margin-bottom:0;">Contrast Overlay Opacity</label>
+                  <span id="bgOverlayVal" style="font-size:11px; color:var(--purple); font-weight:700;">40%</span>
+                </div>
+                <input type="range" id="bgOverlaySlider" min="0" max="0.8" step="0.05" value="0.4" style="width:100%; margin-bottom:10px;">
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+                  <label style="font-size:11px; font-weight:700; color:var(--ink); margin-bottom:0;">Soft Glass Blur</label>
+                  <span id="bgBlurVal" style="font-size:11px; color:var(--purple); font-weight:700;">0px</span>
+                </div>
+                <input type="range" id="bgBlurSlider" min="0" max="15" step="1" value="0" style="width:100%;">
+              </div>
+            </div>
+
+            <label>Card Text Font Family</label>
+            <div class="font-toggle-wrapper" style="margin-bottom:14px; position:relative;">
+              <button type="button" id="fontToggleBtn" class="font-toggle-bar" style="width:100%; display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-radius:12px; background:var(--bg-soft); border:2px solid var(--line); cursor:pointer; transition:all 0.2s ease;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span id="activeFontIcon" style="font-size:18px;">✍️</span>
+                  <span id="activeFontName" style="font-weight:700; color:var(--ink); font-size:13px; font-family:'Baloo 2', cursive;">Baloo 2 (Playful)</span>
+                </div>
+                <span id="activeFontArrow" style="font-size:12px; color:var(--p-color); transition:transform 0.3s ease;">▼</span>
+              </button>
+
+              <div id="cardFontDropdown" class="card-font-dropdown" style="grid-template-columns:repeat(2, 1fr); gap:8px; margin-top:8px; padding:10px; background:var(--bg-card); border:2px solid var(--line); border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+                <button type="button" class="card-font-btn active" data-font="'Baloo 2', cursive" title="Playful & Rounded">
+                  <span class="font-icon">✍️</span>
+                  <span class="font-name" style="font-family:'Baloo 2', cursive; font-size:13px; font-weight:700;">Baloo 2</span>
+                </button>
+                <button type="button" class="card-font-btn" data-font="'Poppins', sans-serif" title="Modern Clean Sans">
+                  <span class="font-icon">🅰️</span>
+                  <span class="font-name" style="font-family:'Poppins', sans-serif; font-size:13px; font-weight:600;">Poppins</span>
+                </button>
+                <button type="button" class="card-font-btn" data-font="'Caveat', cursive" title="Handwritten Cursive Script">
+                  <span class="font-icon">📜</span>
+                  <span class="font-name" style="font-family:'Caveat', cursive; font-size:16px; font-weight:700;">Caveat</span>
+                </button>
+                <button type="button" class="card-font-btn" data-font="'Playfair Display', serif" title="Elegant Editorial Serif">
+                  <span class="font-icon">✒️</span>
+                  <span class="font-name" style="font-family:'Playfair Display', serif; font-size:13px; font-weight:600;">Playfair</span>
+                </button>
+                <button type="button" class="card-font-btn" data-font="'Pacifico', cursive" title="Retro Script">
+                  <span class="font-icon">🎨</span>
+                  <span class="font-name" style="font-family:'Pacifico', cursive; font-size:11px;">Pacifico</span>
+                </button>
+                <button type="button" class="card-font-btn" data-font="'Cinzel', serif" title="Royal Classical">
+                  <span class="font-icon">👑</span>
+                  <span class="font-name" style="font-family:'Cinzel', serif; font-size:12px; font-weight:700;">Cinzel</span>
+                </button>
+                <button type="button" class="card-font-btn" data-font="'Fredoka', sans-serif" title="Bold Rounded Fun">
+                  <span class="font-icon">🎈</span>
+                  <span class="font-name" style="font-family:'Fredoka', sans-serif; font-size:13px; font-weight:600;">Fredoka</span>
+                </button>
+                <button type="button" class="card-font-btn" data-font="'Montserrat', sans-serif" title="Clean Geometric">
+                  <span class="font-icon">📐</span>
+                  <span class="font-name" style="font-family:'Montserrat', sans-serif; font-size:12px; font-weight:600;">Montserrat</span>
+                </button>
+              </div>
+            </div>
+
+            <label>Avatar Preset or Custom Photo</label>
+            <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+              <button type="button" class="btn ghost avatar-preset-btn active" data-src="" style="padding:6px 12px; font-size:13px;" title="Emoji Avatar">🧑‍🏫 Emoji</button>
+              <button type="button" class="btn ghost avatar-preset-btn" data-src="assets/about_teacher_male.jpg" style="padding:6px 12px; font-size:13px;" title="Male 3D Teacher">👨‍🏫 Male 3D</button>
+              <button type="button" class="btn ghost avatar-preset-btn" data-src="assets/hero_teacher_scene.jpg" style="padding:6px 12px; font-size:13px;" title="Female 3D Teacher">👩‍🏫 Female 3D</button>
+              <button type="button" class="btn ghost avatar-preset-btn" data-src="assets/cta_gift_box.jpg" style="padding:6px 12px; font-size:13px;" title="Gift Box">🎁 Gift Box</button>
+            </div>
+
+            <label>Photo Frame Layout (Drag image on card to move! 📍)</label>
+            <div class="photo-layout-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-bottom:14px;">
+              <button type="button" class="photo-layout-btn active" data-layout="circle" title="Classic Circle Avatar">
+                <span class="pl-icon">⭕</span>
+                <span class="pl-name">Circle</span>
+              </button>
+              <button type="button" class="photo-layout-btn" data-layout="arch" title="Arched Scrapbook Frame">
+                <span class="pl-icon">⛩️</span>
+                <span class="pl-name">Arched</span>
+              </button>
+              <button type="button" class="photo-layout-btn" data-layout="full" title="Full Card Background Cover">
+                <span class="pl-icon">🖼️</span>
+                <span class="pl-name">Full Cover</span>
+              </button>
+            </div>
+
+            <label>Upload Custom Photo</label>
+            <div style="display:flex; gap:8px; margin-bottom:14px; align-items:center;">
+              <label class="upload" style="flex:1; margin-bottom:0; padding:10px 14px; display:inline-flex; align-items:center; justify-content:center; gap:6px;">
+                <span>📷 Choose Image</span>
+                <input type="file" id="photo" accept="image/*">
+              </label>
+              <button type="button" class="btn ghost" id="openPhotoAdjustBtn" title="Toggle Image Size & Position Sliders" style="padding:10px 12px; font-size:15px; border-radius:12px;">
+                🛠️
+              </button>
+              <button type="button" class="btn ghost" id="removePhotoBtn" style="padding:10px 12px; font-size:13px; color:#d93838; border-color:#ffcdd2;" title="Remove Photo">❌</button>
+            </div>
+
+            <!-- Inline Expandable Photo Adjust Controls Dropdown -->
+            <div class="photo-controls-dropdown" id="photoControls">
+              <div class="photo-controls-head">
+                <span>🔍 Adjust Image Size & Position</span>
+                <span class="reset-btn" id="resetPhotoBtn">Reset 🔄</span>
+              </div>
+              
+              <div class="control-group">
+                <label>Zoom: <span id="zoomVal">1.0x</span></label>
+                <input type="range" id="zoomSlider" min="0.5" max="2.5" step="0.05" value="1">
+              </div>
+
+              <div class="control-group">
+                <label>Horizontal Position (X): <span id="posXVal">0px</span></label>
+                <input type="range" id="posXSlider" min="-80" max="80" step="1" value="0">
+              </div>
+
+              <div class="control-group">
+                <label>Vertical Position (Y): <span id="posYVal">0px</span></label>
+                <input type="range" id="posYSlider" min="-80" max="80" step="1" value="0">
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: HERO SECTION -->
+          <div class="tab-content" id="tab-hero" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">🚀 Hero Section Text & Image</h4>
+            <label for="heroScriptInput">Hero Script Text</label>
+            <input type="text" id="heroScriptInput" value="Happy" placeholder="e.g. Happy, Warmest, Special">
+
+            <label for="heroTitleInput">Hero Main Title</label>
+            <input type="text" id="heroTitleInput" value="TEACHER'S DAY" placeholder="Main Heading">
+
+            <label for="heroSubtextInput">Hero Description</label>
+            <textarea id="heroSubtextInput">A teacher takes a hand, opens a mind, and touches a heart forever. Celebrate your amazing mentors today! 💗</textarea>
+
+            <label>Select Hero Image Preset</label>
+            <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+              <button type="button" class="btn ghost hero-preset-btn active" data-src="assets/hero_teacher_scene.jpg" style="padding:6px 12px; font-size:13px;">🏫 Classroom</button>
+              <button type="button" class="btn ghost hero-preset-btn" data-src="assets/cta_teacher_wave.jpg" style="padding:6px 12px; font-size:13px;">🙋‍♂️ Waving</button>
+              <button type="button" class="btn ghost hero-preset-btn" data-src="assets/cta_gift_box.jpg" style="padding:6px 12px; font-size:13px;">🎁 Gift Box</button>
+            </div>
+
+            <label>Or Upload Custom Hero Image</label>
+            <div style="display:flex; gap:10px; margin-bottom:12px;">
+              <label class="upload" style="flex:1; margin-bottom:0;">
+                🖼️ Choose Custom Hero Image
+                <input type="file" id="heroPhotoInput" accept="image/*">
+              </label>
+              <button type="button" class="btn ghost" id="resetHeroImgBtn" style="padding:10px 14px; font-size:13px;" title="Reset Hero Image">❌ Reset</button>
+            </div>
+
+            <div id="heroThumbnailBox" style="display:flex; align-items:center; gap:10px; background:var(--bg-soft); padding:8px 12px; border-radius:12px; border:1px solid var(--line);">
+              <img id="heroThumbnailImg" src="assets/hero_teacher_scene.jpg" style="width:48px; height:48px; border-radius:8px; object-fit:cover;">
+              <span style="font-size:12px; color:var(--p-color); font-weight:500;">Selected Hero Image</span>
+            </div>
+          </div>
+
+          <!-- TAB 3: ABOUT & STATS -->
+          <div class="tab-content" id="tab-about" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">📖 About Section Text & Stats</h4>
+            <label for="aboutHeadingInput">About Section Heading</label>
+            <input type="text" id="aboutHeadingInput" value="Honoring the Guides of Our Lives">
+
+            <label for="aboutDescInput">About Description</label>
+            <textarea id="aboutDescInput">Teacher's Day is a special occasion to express heartfelt gratitude to the wonderful educators who illuminate our paths with knowledge, patience, and encouragement.</textarea>
+
+            <label for="stat1Input">Stat 1 (Cards Created)</label>
+            <input type="text" id="stat1Input" value="5M+">
+
+            <label for="stat2Input">Stat 2 (Happy Teachers)</label>
+            <input type="text" id="stat2Input" value="1M+">
+
+            <label for="stat3Input">Stat 3 (Countries)</label>
+            <input type="text" id="stat3Input" value="100+">
+
+            <label>Select About Image Preset</label>
+            <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+              <button type="button" class="btn ghost about-preset-btn active" data-src="assets/about_teacher_male.jpg" style="padding:6px 12px; font-size:13px;">👨‍🏫 Male Teacher</button>
+              <button type="button" class="btn ghost about-preset-btn" data-src="assets/hero_teacher_scene.jpg" style="padding:6px 12px; font-size:13px;">👩‍🏫 Female Teacher</button>
+              <button type="button" class="btn ghost about-preset-btn" data-src="assets/cta_teacher_wave.jpg" style="padding:6px 12px; font-size:13px;">🙋‍♂️ Waving Teacher</button>
+            </div>
+
+            <label>Or Upload Custom About Image</label>
+            <div style="display:flex; gap:10px; margin-top:6px; margin-bottom:12px;">
+              <label class="upload" style="flex:1; margin-bottom:0;">
+                🖼️ Choose Custom About Image
+                <input type="file" id="aboutPhotoInput" accept="image/*">
+              </label>
+              <button type="button" class="btn ghost" id="resetAboutImgBtn" style="padding:10px 14px; font-size:13px;" title="Reset About Image">❌ Reset</button>
+            </div>
+
+            <div id="aboutThumbnailBox" style="display:flex; align-items:center; gap:10px; background:var(--bg-soft); padding:8px 12px; border-radius:12px; border:1px solid var(--line);">
+              <img id="aboutThumbnailImg" src="assets/about_teacher_male.jpg" style="width:48px; height:48px; border-radius:8px; object-fit:cover;">
+              <span style="font-size:12px; color:var(--p-color); font-weight:500;">Selected About Image</span>
+            </div>
+          </div>
+
+          <!-- TAB: FEATURES BAR CUSTOMIZER -->
+          <div class="tab-content" id="tab-features" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">⚡ Features Bar Cards Customizer</h4>
+            
+            <!-- Feature 1 -->
+            <label style="font-weight:700; color:var(--purple); font-size:12px;">Feature Card 1</label>
+            <div style="display:flex; gap:8px; margin-bottom:6px;">
+              <input type="text" id="feat1IconInput" value="🎨" style="width:60px; text-align:center; font-size:16px; margin-bottom:0; padding:6px;">
+              <input type="text" id="feat1TitleInput" value="Beautiful Cards" placeholder="Title" style="flex:1; margin-bottom:0; font-size:12px; padding:6px 10px;">
+            </div>
+            <input type="text" id="feat1DescInput" value="Stunning 5D animated designs" placeholder="Description" style="font-size:12px; padding:6px 10px; margin-bottom:12px;">
+
+            <!-- Feature 2 -->
+            <label style="font-weight:700; color:var(--purple); font-size:12px;">Feature Card 2</label>
+            <div style="display:flex; gap:8px; margin-bottom:6px;">
+              <input type="text" id="feat2IconInput" value="✏️" style="width:60px; text-align:center; font-size:16px; margin-bottom:0; padding:6px;">
+              <input type="text" id="feat2TitleInput" value="Easy Customization" placeholder="Title" style="flex:1; margin-bottom:0; font-size:12px; padding:6px 10px;">
+            </div>
+            <input type="text" id="feat2DescInput" value="Personalize with messages & photos" placeholder="Description" style="font-size:12px; padding:6px 10px; margin-bottom:12px;">
+
+            <!-- Feature 3 -->
+            <label style="font-weight:700; color:var(--purple); font-size:12px;">Feature Card 3</label>
+            <div style="display:flex; gap:8px; margin-bottom:6px;">
+              <input type="text" id="feat3IconInput" value="↗" style="width:60px; text-align:center; font-size:16px; margin-bottom:0; padding:6px;">
+              <input type="text" id="feat3TitleInput" value="Share Instantly" placeholder="Title" style="flex:1; margin-bottom:0; font-size:12px; padding:6px 10px;">
+            </div>
+            <input type="text" id="feat3DescInput" value="Save your card and spread joy" placeholder="Description" style="font-size:12px; padding:6px 10px; margin-bottom:12px;">
+
+            <!-- Feature 4 -->
+            <label style="font-weight:700; color:var(--purple); font-size:12px;">Feature Card 4</label>
+            <div style="display:flex; gap:8px; margin-bottom:6px;">
+              <input type="text" id="feat4IconInput" value="♡" style="width:60px; text-align:center; font-size:16px; margin-bottom:0; padding:6px;">
+              <input type="text" id="feat4TitleInput" value="100% Free" placeholder="Title" style="flex:1; margin-bottom:0; font-size:12px; padding:6px 10px;">
+            </div>
+            <input type="text" id="feat4DescInput" value="Create and share completely free" placeholder="Description" style="font-size:12px; padding:6px 10px; margin-bottom:12px;">
+          </div>
+
+          <!-- TAB: GALLERY TEXT CUSTOMIZER -->
+          <div class="tab-content" id="tab-gallery" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">🖼️ Gallery Section Headings</h4>
+            
+            <label for="galleryTagInput">Gallery Section Tag</label>
+            <input type="text" id="galleryTagInput" value="Gallery" placeholder="e.g. Gallery, TEMPLATES GALLERY">
+
+            <label for="galleryHeadingInput">Gallery Main Title</label>
+            <input type="text" id="galleryHeadingInput" value="Beautiful Teacher's Day Cards" placeholder="Gallery Heading">
+
+            <label for="gallerySubInput">Gallery Subtitle Description</label>
+            <textarea id="gallerySubInput" placeholder="Subtitle text...">Explore our collection of whimsical, 3D animated, and heartfelt greeting card designs.</textarea>
+          </div>
+
+          <!-- TAB: QUOTES & TESTIMONIALS CUSTOMIZER -->
+          <div class="tab-content" id="tab-messages" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">💬 Quotes & Testimonials Section</h4>
+
+            <label for="msgTagInput">Testimonials Section Tag</label>
+            <input type="text" id="msgTagInput" value="Testimonials" placeholder="e.g. Testimonials, HEARTFELT QUOTES">
+
+            <label for="msgHeadingInput">Section Heading</label>
+            <input type="text" id="msgHeadingInput" value="What Students Say" placeholder="Main Heading">
+
+            <h5 style="color:var(--ink); margin:12px 0 6px; font-size:13px; font-weight:700;">Student Testimonials (3 Cards)</h5>
+
+            <!-- Student 1 -->
+            <div style="background:var(--bg-soft); padding:10px; border-radius:12px; border:1px solid var(--line); margin-bottom:10px;">
+              <label style="font-weight:700; color:var(--purple); font-size:11px;">Student 1</label>
+              <textarea id="quote1TextInput" style="font-size:11px; padding:6px; margin-bottom:6px; height:50px;">"This platform helped me create a beautiful personalized 3D card for my favorite teacher. She was so moved when she received it!"</textarea>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                <input type="text" id="quote1NameInput" value="Priya Sharma" placeholder="Student Name" style="margin-bottom:0; font-size:11px; padding:6px;">
+                <input type="text" id="quote1RoleInput" value="Student" placeholder="Role/Class" style="margin-bottom:0; font-size:11px; padding:6px;">
+              </div>
+            </div>
+
+            <!-- Student 2 -->
+            <div style="background:var(--bg-soft); padding:10px; border-radius:12px; border:1px solid var(--line); margin-bottom:10px;">
+              <label style="font-weight:700; color:var(--purple); font-size:11px;">Student 2</label>
+              <textarea id="quote2TextInput" style="font-size:11px; padding:6px; margin-bottom:6px; height:50px;">"Amazing collection of 3D animated cards! It took less than a minute to customize, adjust the photo zoom, and export a high-res card."</textarea>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                <input type="text" id="quote2NameInput" value="Aman Verma" placeholder="Student Name" style="margin-bottom:0; font-size:11px; padding:6px;">
+                <input type="text" id="quote2RoleInput" value="Student" placeholder="Role/Class" style="margin-bottom:0; font-size:11px; padding:6px;">
+              </div>
+            </div>
+
+            <!-- Student 3 -->
+            <div style="background:var(--bg-soft); padding:10px; border-radius:12px; border:1px solid var(--line); margin-bottom:10px;">
+              <label style="font-weight:700; color:var(--purple); font-size:11px;">Student 3</label>
+              <textarea id="quote3TextInput" style="font-size:11px; padding:6px; margin-bottom:6px; height:50px;">"Made our Teacher's Day classroom celebration extra special. Highly recommended to all students everywhere!"</textarea>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                <input type="text" id="quote3NameInput" value="Sneha Patel" placeholder="Student Name" style="margin-bottom:0; font-size:11px; padding:6px;">
+                <input type="text" id="quote3RoleInput" value="Student" placeholder="Role/Class" style="margin-bottom:0; font-size:11px; padding:6px;">
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: CTA BANNER CUSTOMIZER -->
+          <div class="tab-content" id="tab-cta" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">📣 Call To Action Banner Settings</h4>
+
+            <label for="ctaTitleInput">CTA Banner Title</label>
+            <input type="text" id="ctaTitleInput" value="Ready to Make Your Teacher Smile?">
+
+            <label for="ctaDescInput">CTA Description</label>
+            <textarea id="ctaDescInput">Create a beautiful, personalized Teacher's Day card in just a few clicks!</textarea>
+
+            <label for="ctaBtnTextInput">CTA Button Label</label>
+            <input type="text" id="ctaBtnTextInput" value="Create Your Card Now ✨">
+
+            <label>Select CTA Artwork Preset</label>
+            <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+              <button type="button" class="btn ghost cta-preset-btn active" data-src="assets/cta_teacher_wave.jpg" style="padding:6px 12px; font-size:13px;">🙋‍♂️ Waving Teacher</button>
+              <button type="button" class="btn ghost cta-preset-btn" data-src="assets/cta_gift_box.jpg" style="padding:6px 12px; font-size:13px;">🎁 Gift Box</button>
+              <button type="button" class="btn ghost cta-preset-btn" data-src="assets/hero_teacher_scene.jpg" style="padding:6px 12px; font-size:13px;">🏫 Classroom</button>
+            </div>
+
+            <label>Or Upload Custom CTA Artwork Image</label>
+            <div style="display:flex; gap:10px; margin-top:6px; margin-bottom:12px;">
+              <label class="upload" style="flex:1; margin-bottom:0;">
+                🖼️ Choose Custom CTA Image
+                <input type="file" id="ctaPhotoInput" accept="image/*">
+              </label>
+              <button type="button" class="btn ghost" id="resetCtaImgBtn" style="padding:10px 14px; font-size:13px;" title="Reset CTA Image">❌ Reset</button>
+            </div>
+
+            <div id="ctaThumbnailBox" style="display:flex; align-items:center; gap:10px; background:var(--bg-soft); padding:8px 12px; border-radius:12px; border:1px solid var(--line);">
+              <img id="ctaThumbnailImg" src="assets/cta_teacher_wave.jpg" style="width:48px; height:48px; border-radius:8px; object-fit:cover;">
+              <span style="font-size:12px; color:var(--p-color); font-weight:500;">Selected CTA Image</span>
+            </div>
+          </div>
+
+          <!-- TAB 4: NAVIGATION TOP BAR CUSTOMIZER -->
+          <div class="tab-content" id="tab-navbar" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">🧭 Navigation Top Bar Settings</h4>
+            
+            <label for="navLogoIconInput">Navbar Logo Emoji / Icon</label>
+            <div style="display:flex; gap:8px; margin-bottom:10px;">
+              <input type="text" id="navLogoIconInput" value="💗" style="width:70px; text-align:center; font-size:18px; margin-bottom:0; padding:8px;">
+              <div style="display:flex; gap:6px; flex-wrap:wrap; flex:1;">
+                <button type="button" class="btn ghost nav-icon-preset" data-icon="💗" style="padding:6px 10px; font-size:14px;">💗</button>
+                <button type="button" class="btn ghost nav-icon-preset" data-icon="🎓" style="padding:6px 10px; font-size:14px;">🎓</button>
+                <button type="button" class="btn ghost nav-icon-preset" data-icon="📚" style="padding:6px 10px; font-size:14px;">📚</button>
+                <button type="button" class="btn ghost nav-icon-preset" data-icon="⭐" style="padding:6px 10px; font-size:14px;">⭐</button>
+                <button type="button" class="btn ghost nav-icon-preset" data-icon="🏫" style="padding:6px 10px; font-size:14px;">🏫</button>
+                <button type="button" class="btn ghost nav-icon-preset" data-icon="👨‍🏫" style="padding:6px 10px; font-size:14px;">👨‍🏫</button>
+              </div>
+            </div>
+
+            <label for="navLogoTextInput">Navbar Brand Title</label>
+            <input type="text" id="navLogoTextInput" value="Teacher's Day" placeholder="Brand Name">
+
+            <label for="navLogoColorInput">Navbar Brand Title Text Color</label>
+            <div style="display:flex; gap:8px; align-items:center; margin-bottom:14px;">
+              <input type="color" id="navLogoColorInput" value="#7444ed" style="width:48px; height:38px; border-radius:8px; cursor:pointer; padding:2px; border:1px solid var(--line);">
+              <div style="display:flex; gap:6px; flex:1; flex-wrap:wrap;">
+                <button type="button" class="btn ghost nav-logo-color-preset" data-color="#7444ed" style="padding:4px 8px; font-size:11px; background:#7444ed; color:#fff;" title="Purple">Purple</button>
+                <button type="button" class="btn ghost nav-logo-color-preset" data-color="#e84f9b" style="padding:4px 8px; font-size:11px; background:#e84f9b; color:#fff;" title="Pink">Pink</button>
+                <button type="button" class="btn ghost nav-logo-color-preset" data-color="#25a8b7" style="padding:4px 8px; font-size:11px; background:#25a8b7; color:#fff;" title="Teal">Teal</button>
+                <button type="button" class="btn ghost nav-logo-color-preset" data-color="#efad35" style="padding:4px 8px; font-size:11px; background:#efad35; color:#fff;" title="Gold">Gold</button>
+                <button type="button" class="btn ghost nav-logo-color-preset" data-color="#1e2451" style="padding:4px 8px; font-size:11px; background:#1e2451; color:#fff;" title="Dark Ink">Dark</button>
+              </div>
+            </div>
+
+            <label>Top Bar Navigation Link Labels</label>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+              <div>
+                <small style="font-size:10px; color:var(--p-color); display:block; margin-bottom:2px;">Link 1 (Home)</small>
+                <input type="text" id="navLink1Input" value="Home" style="margin-bottom:0; font-size:12px; padding:8px;">
+              </div>
+              <div>
+                <small style="font-size:10px; color:var(--p-color); display:block; margin-bottom:2px;">Link 2 (About)</small>
+                <input type="text" id="navLink2Input" value="About" style="margin-bottom:0; font-size:12px; padding:8px;">
+              </div>
+              <div>
+                <small style="font-size:10px; color:var(--p-color); display:block; margin-bottom:2px;">Link 3 (Gallery)</small>
+                <input type="text" id="navLink3Input" value="Gallery" style="margin-bottom:0; font-size:12px; padding:8px;">
+              </div>
+              <div>
+                <small style="font-size:10px; color:var(--p-color); display:block; margin-bottom:2px;">Link 4 (Messages)</small>
+                <input type="text" id="navLink4Input" value="Messages" style="margin-bottom:0; font-size:12px; padding:8px;">
+              </div>
+              <div style="grid-column: span 2;">
+                <small style="font-size:10px; color:var(--p-color); display:block; margin-bottom:2px;">Link 5 (Customize)</small>
+                <input type="text" id="navLink5Input" value="Customize" style="margin-bottom:0; font-size:12px; padding:8px;">
+              </div>
+            </div>
+
+            <label>Top Bar Background Style</label>
+            <div style="display:flex; gap:8px; margin-bottom:12px;">
+              <button type="button" class="btn ghost nav-style-btn active" data-navstyle="glass" style="flex:1; padding:6px 8px; font-size:11px;">✨ Glassmorphism</button>
+              <button type="button" class="btn ghost nav-style-btn" data-navstyle="solid" style="flex:1; padding:6px 8px; font-size:11px;">🎨 Solid Theme</button>
+              <button type="button" class="btn ghost nav-style-btn" data-navstyle="gradient" style="flex:1; padding:6px 8px; font-size:11px;">🌈 Gradient</button>
+            </div>
+          </div>
+
+          <!-- TAB 5: GLOBAL THEME & STYLE SWITCHER -->
+          <div class="tab-content" id="tab-style" style="display:none;">
+            <h4 style="color:var(--purple); margin-bottom:10px; font-size:14px;">🎨 Site Theme & Style Switcher</h4>
+            
+            <label>Choose Primary Color Preset</label>
+            <div class="colors">
+              <span class="color active" data-color="#7444ed" style="background:#7444ed" title="Purple"></span>
+              <span class="color" data-color="#e84f9b" style="background:#e84f9b" title="Pink"></span>
+              <span class="color" data-color="#25a8b7" style="background:#25a8b7" title="Teal"></span>
+              <span class="color" data-color="#efad35" style="background:#efad35" title="Gold"></span>
+              <span class="color" data-color="#5d9b76" style="background:#5d9b76" title="Emerald"></span>
+              <span class="color" data-color="#d93838" style="background:#d93838" title="Crimson"></span>
+            </div>
+
+            <label for="customColorPicker">Custom Color Picker</label>
+            <input type="color" id="customColorPicker" value="#7444ed" style="width:100%; height:42px; border-radius:10px; cursor:pointer; padding:2px; margin-bottom:14px; border:1px solid var(--line);">
+
+            <label>Website Headings Font Family (H1, H2, H3)</label>
+            <div class="header-font-card-grid" style="margin-bottom:14px;">
+              <div class="header-font-card active" data-font="'Baloo 2', cursive, sans-serif">
+                <div class="font-card-name" style="font-family:'Baloo 2', cursive; font-size:14px; font-weight:700;">Baloo 2</div>
+                <div class="font-card-sub">Playful</div>
+              </div>
+              <div class="header-font-card" data-font="'Poppins', sans-serif">
+                <div class="font-card-name" style="font-family:'Poppins', sans-serif; font-size:13px; font-weight:600;">Poppins</div>
+                <div class="font-card-sub">Modern</div>
+              </div>
+              <div class="header-font-card" data-font="'Caveat', cursive">
+                <div class="font-card-name" style="font-family:'Caveat', cursive; font-size:17px; font-weight:700;">Caveat</div>
+                <div class="font-card-sub">Handwritten</div>
+              </div>
+              <div class="header-font-card" data-font="'Playfair Display', serif">
+                <div class="font-card-name" style="font-family:'Playfair Display', serif; font-size:13px; font-weight:600;">Playfair</div>
+                <div class="font-card-sub">Editorial</div>
+              </div>
+              <div class="header-font-card" data-font="'Pacifico', cursive">
+                <div class="font-card-name" style="font-family:'Pacifico', cursive; font-size:11px;">Pacifico</div>
+                <div class="font-card-sub">Script</div>
+              </div>
+              <div class="header-font-card" data-font="'Cinzel', serif">
+                <div class="font-card-name" style="font-family:'Cinzel', serif; font-size:12px; font-weight:700;">Cinzel</div>
+                <div class="font-card-sub">Royal</div>
+              </div>
+              <div class="header-font-card" data-font="'Fredoka', sans-serif">
+                <div class="font-card-name" style="font-family:'Fredoka', sans-serif; font-size:13px; font-weight:600;">Fredoka</div>
+                <div class="font-card-sub">Bold Fun</div>
+              </div>
+              <div class="header-font-card" data-font="'Montserrat', sans-serif">
+                <div class="font-card-name" style="font-family:'Montserrat', sans-serif; font-size:12px; font-weight:600;">Montserrat</div>
+                <div class="font-card-sub">Clean</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn" id="previewBtn" style="width:100%;margin-top:12px">Apply & Preview Changes 👁️</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. Testimonials Section                    -->
+  <!-- ========================================== -->
+  <section id="messages" class="section testimonials">
+    <div class="container">
+      <div class="gallery-head reveal">
+        <span class="section-tag">Testimonials</span>
+        <h2>What Students Say</h2>
+      </div>
+      <div class="test-grid reveal">
+        <div class="quote">
+          <p>"This platform helped me create a beautiful personalized 3D card for my favorite teacher. She was so moved when she received it!"</p>
+          <div class="person">
+            <div class="avatar">👧</div>
+            <div><b>Priya Sharma</b><small>Student</small></div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="quote">
+          <p>"Amazing collection of 3D animated cards! It took less than a minute to customize, adjust the photo zoom, and export a high-res card."</p>
+          <div class="person">
+            <div class="avatar">👦</div>
+            <div><b>Aman Verma</b><small>Student</small></div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="quote">
+          <p>"Made our Teacher's Day classroom celebration extra special. Highly recommended to all students everywhere!"</p>
+          <div class="person">
+            <div class="avatar">👩</div>
+            <div><b>Sneha Patel</b><small>Student</small></div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 9. Call to Action Banner Section           -->
+  <!-- ========================================== -->
+  <section class="cta">
+    <div class="container cta-inner">
+      <div class="cta-art">
+        <img src="assets/cta_teacher_wave.jpg" alt="3D Waving Teacher">
+      </div>
+      <div class="cta-text">
+        <h2>Ready to Make Your Teacher Smile?</h2>
+        <p>Create a beautiful, personalized Teacher's Day card in just a few clicks!</p>
+        <a href="#customize" class="btn light">Create Your Card Now ✨</a>
+      </div>
+      <div class="cta-art">
+        <img src="assets/cta_gift_box.jpg" alt="3D Gift Box">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 10. Footer Section                         -->
+  <!-- ========================================== -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        © 2026 Teacher's Day • Made with ❤️ by <a href="https://github.com/rTechCoding" target="_blank" rel="noopener noreferrer">rTechCoding</a> for teachers everywhere.
+      </div>
+      <div>
+        <a href="https://github.com/rTechCoding" target="_blank" rel="noopener noreferrer" class="github-link-btn" title="Visit rTechCoding GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>rTechCoding GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 11. Interactive Modals                      -->
+  <!-- ========================================== -->
+
+  <!-- General Modal Inspector -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <img id="modalImg" src="" alt="Teacher's Day Card Preview">
+      <h3 id="modalTitle">Happy Teacher's Day</h3>
+      <button class="btn" id="modalSelectBtn" style="margin-top:10px">Customize This Template ✨</button>
+    </div>
+  </div>
+
+  <!-- Apply & Preview Section Changes Modal Popup -->
+  <div class="modal" id="applyModal">
+    <div class="modal-box" style="max-width:720px; padding:32px;">
+      <button class="modal-close" id="applyModalClose" aria-label="Close">×</button>
+      <span class="section-tag">Applied Changes Preview</span>
+      <h3 id="applyModalTitle" style="font-size:30px; margin-bottom:12px; color:var(--purple);">Changes Applied Successfully! 🎉</h3>
+      <p id="applyModalDesc" style="font-size:14px; color:var(--p-color); margin-bottom:20px;">Your customized text, images, and theme colors have been applied live to the website.</p>
+      
+      <!-- Rendered Mini Section Preview Container -->
+      <div id="applyModalBody" style="background:var(--bg-soft); border-radius:20px; padding:20px; margin-bottom:24px; border:1px solid var(--line);">
+      </div>
+
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn" id="applyModalOkBtn">Looks Great! ✨</button>
+        <button class="btn ghost" id="applyModalDownloadBtn">Download Card PNG 💾</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 12. Style Switcher Drawer Panel             -->
+  <!-- ========================================== -->
+  <div class="style-switcher-drawer" id="styleSwitcherDrawer">
+    <button class="modal-close" id="drawerCloseBtn" aria-label="Close" style="top:18px; right:18px;">×</button>
+    
+    <!-- Title Header -->
+    <div style="margin-bottom:12px;">
+      <div class="style-switcher-title">
+        <span style="font-weight: 800; font-size: 17px; letter-spacing: 1.2px; color: var(--ink); text-transform: uppercase;">STYLE SWITCHER</span>
+      </div>
+    </div>
+
+    <!-- 1. Color Drops Grid (10 Palette Swatches) -->
+    <div class="switcher-section">
+      <div class="swatch-drops-grid">
+        <span class="drop-swatch active" data-color="#7444ed" style="background:#7444ed;" title="Purple">💧</span>
+        <span class="drop-swatch" data-color="#25a8b7" style="background:#25a8b7;" title="Teal">💧</span>
+        <span class="drop-swatch" data-color="#efad35" style="background:#efad35;" title="Gold">💧</span>
+        <span class="drop-swatch" data-color="#5d9b76" style="background:#5d9b76;" title="Emerald">💧</span>
+        <span class="drop-swatch" data-color="#e84f9b" style="background:#e84f9b;" title="Magenta">💧</span>
+        <span class="drop-swatch" data-color="#ff6b35" style="background:#ff6b35;" title="Orange">💧</span>
+        <span class="drop-swatch" data-color="#3f51b5" style="background:#3f51b5;" title="Indigo">💧</span>
+        <span class="drop-swatch" data-color="#d93838" style="background:#d93838;" title="Red">💧</span>
+        <span class="drop-swatch" data-color="#ff9800" style="background:#ff9800;" title="Amber">💧</span>
+        <span class="drop-swatch" data-color="#8bc34a" style="background:#8bc34a;" title="Lime">💧</span>
+      </div>
+    </div>
+
+    <hr class="switcher-divider">
+
+    <!-- 2. Body Skin (Light / Dark Radio) -->
+    <div class="switcher-section">
+      <div class="switcher-label">BODY SKIN</div>
+      <div class="radio-row">
+        <label class="radio-option">
+          <input type="radio" name="bodySkinRadio" value="light" id="skinLightRadio" checked>
+          <span>Light</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="bodySkinRadio" value="dark" id="skinDarkRadio">
+          <span>Dark</span>
+        </label>
+      </div>
+    </div>
+
+    <hr class="switcher-divider">
+
+    <!-- 3. Layout Style (Wide / Boxed Radio) -->
+    <div class="switcher-section">
+      <div class="switcher-label">LAYOUT STYLE</div>
+      <div class="radio-row">
+        <label class="radio-option">
+          <input type="radio" name="layoutStyleRadio" value="wide" id="layoutWideRadio" checked>
+          <span>Wide</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="layoutStyleRadio" value="boxed" id="layoutBoxedRadio">
+          <span>Boxed</span>
+        </label>
+      </div>
+    </div>
+
+    <hr class="switcher-divider">
+
+    <!-- 4. Section Separator Style (HOT) -->
+    <div class="switcher-section">
+      <div class="switcher-label" style="display:flex; align-items:center; gap:8px;">
+        <span>SEPARATOR</span>
+        <span class="hot-badge">HOT</span>
+      </div>
+      <small style="color:var(--purple); font-style:italic; font-size:11px; display:block; margin-bottom:8px;">Select and scroll to see the changes</small>
+      <div class="separator-options-grid">
+        <label class="sep-option">
+          <input type="radio" name="separatorRadio" value="solid" checked>
+          <span class="sep-preview sep-solid" title="Solid Line">━━</span>
+        </label>
+        <label class="sep-option">
+          <input type="radio" name="separatorRadio" value="slanted">
+          <span class="sep-preview sep-slanted" title="Slanted Accent">╱╱</span>
+        </label>
+        <label class="sep-option">
+          <input type="radio" name="separatorRadio" value="double">
+          <span class="sep-preview sep-double" title="Double Line">══</span>
+        </label>
+        <label class="sep-option">
+          <input type="radio" name="separatorRadio" value="wave">
+          <span class="sep-preview sep-wave" title="Wave Line">〰️</span>
+        </label>
+        <label class="sep-option">
+          <input type="radio" name="separatorRadio" value="arrow">
+          <span class="sep-preview sep-arrow" title="Arrow Triangle">▼▼</span>
+        </label>
+      </div>
+    </div>
+
+    <hr class="switcher-divider">
+
+    <!-- 5. Background Animation (6 Grid Cards) -->
+    <div class="switcher-section">
+      <div class="switcher-label" style="margin-bottom:10px;">BACKGROUND ANIMATION</div>
+      <div class="anim-grid">
+        <div class="anim-card active" data-anim="mesh">
+          <div class="anim-icon">🌈</div>
+          <div class="anim-label">Mesh</div>
+        </div>
+        <div class="anim-card" data-anim="particles">
+          <div class="anim-icon">✨</div>
+          <div class="anim-label">Particles</div>
+        </div>
+        <div class="anim-card" data-anim="confetti">
+          <div class="anim-icon">🎉</div>
+          <div class="anim-label">Confetti</div>
+        </div>
+        <div class="anim-card" data-anim="bubbles">
+          <div class="anim-icon">🫧</div>
+          <div class="anim-label">Bubbles</div>
+        </div>
+        <div class="anim-card" data-anim="stars">
+          <div class="anim-icon">⭐</div>
+          <div class="anim-label">Stars</div>
+        </div>
+        <div class="anim-card" data-anim="hearts">
+          <div class="anim-icon">💜</div>
+          <div class="anim-label">Hearts</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="switcher-divider">
+
+    <!-- Site Headings Font Family Switcher (H1, H2, H3) -->
+    <div class="switcher-section">
+      <div class="switcher-label" style="margin-bottom:10px;">SITE HEADINGS FONT FAMILY</div>
+      <div class="header-font-card-grid">
+        <div class="header-font-card active" data-font="'Baloo 2', cursive, sans-serif">
+          <div class="font-card-name" style="font-family:'Baloo 2', cursive; font-size:14px; font-weight:700;">Baloo 2</div>
+          <div class="font-card-sub">Playful</div>
+        </div>
+        <div class="header-font-card" data-font="'Poppins', sans-serif">
+          <div class="font-card-name" style="font-family:'Poppins', sans-serif; font-size:13px; font-weight:600;">Poppins</div>
+          <div class="font-card-sub">Modern</div>
+        </div>
+        <div class="header-font-card" data-font="'Caveat', cursive">
+          <div class="font-card-name" style="font-family:'Caveat', cursive; font-size:17px; font-weight:700;">Caveat</div>
+          <div class="font-card-sub">Handwritten</div>
+        </div>
+        <div class="header-font-card" data-font="'Playfair Display', serif">
+          <div class="font-card-name" style="font-family:'Playfair Display', serif; font-size:13px; font-weight:600;">Playfair</div>
+          <div class="font-card-sub">Editorial</div>
+        </div>
+        <div class="header-font-card" data-font="'Pacifico', cursive">
+          <div class="font-card-name" style="font-family:'Pacifico', cursive; font-size:11px;">Pacifico</div>
+          <div class="font-card-sub">Script</div>
+        </div>
+        <div class="header-font-card" data-font="'Cinzel', serif">
+          <div class="font-card-name" style="font-family:'Cinzel', serif; font-size:12px; font-weight:700;">Cinzel</div>
+          <div class="font-card-sub">Royal</div>
+        </div>
+        <div class="header-font-card" data-font="'Fredoka', sans-serif">
+          <div class="font-card-name" style="font-family:'Fredoka', sans-serif; font-size:13px; font-weight:600;">Fredoka</div>
+          <div class="font-card-sub">Bold Fun</div>
+        </div>
+        <div class="header-font-card" data-font="'Montserrat', sans-serif">
+          <div class="font-card-name" style="font-family:'Montserrat', sans-serif; font-size:12px; font-weight:600;">Montserrat</div>
+          <div class="font-card-sub">Clean</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="switcher-divider">
+
+    <!-- 6. Background Music & Custom Audio Upload (Max 3MB Limit) -->
+    <div class="switcher-section">
+      <div class="switcher-label" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <span>BACKGROUND MUSIC</span>
+        <span class="music-status-badge" id="musicStatusBadge">Muted 🔇</span>
+      </div>
+
+      <!-- Play/Pause & Mute Buttons -->
+      <div style="display:flex; gap:8px; margin-bottom:10px;">
+        <button type="button" class="btn" id="bgMusicPlayBtn" style="flex:1; padding:8px 12px; font-size:12px; display:flex; align-items:center; justify-content:center; gap:6px;">
+          <span id="musicPlayIcon">▶️</span>
+          <span id="musicPlayText">Play Music</span>
+        </button>
+        <button type="button" class="btn ghost" id="bgMusicMuteBtn" style="padding:8px 12px; font-size:14px;" title="Mute/Unmute">
+          🔊
+        </button>
+      </div>
+
+      <!-- Volume Slider -->
+      <div style="margin-bottom:12px;">
+        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--p-color); margin-bottom:4px;">
+          <span>Volume</span>
+          <span id="musicVolVal">50%</span>
+        </div>
+        <input type="range" id="bgMusicVolSlider" min="0" max="1" step="0.05" value="0.5" style="width:100%; height:6px; cursor:pointer;">
+      </div>
+
+      <!-- Music Track Selector -->
+      <div style="margin-bottom:10px;">
+        <label style="font-size:11px; font-weight:700; color:var(--ink); display:block; margin-bottom:6px;">Select Track / Melody</label>
+        <select id="bgMusicTrackSelect" style="width:100%; padding:8px 10px; border-radius:10px; border:2px solid var(--line); background:var(--bg-soft); color:var(--ink); font-size:12px; font-weight:600; cursor:pointer;">
+          <option value="kahani">📖 Kahani (Story Melody)</option>
+          <option value="jhumritalaiyya">💃 Jhumritalaiyya (Upbeat Folk)</option>
+          <option value="maiyya">💖 Maiyya (Soulful Devotional)</option>
+          <option value="lofi">🎹 Gentle Lofi Synth</option>
+          <option value="chimes">🔔 Festive Chimes</option>
+          <option value="acoustic">🎸 Acoustic Harmony</option>
+          <option value="custom" id="customTrackOption" disabled>🎵 Custom Uploaded Track</option>
+        </select>
+      </div>
+
+      <!-- Upload Custom Music File (Max 3MB limit) -->
+      <div>
+        <label style="font-size:11px; font-weight:700; color:var(--ink); display:block; margin-bottom:4px;">Upload Custom Music (Max 3MB)</label>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <label class="upload" style="flex:1; margin-bottom:0; padding:8px 12px; font-size:12px; display:inline-flex; align-items:center; justify-content:center; gap:6px;">
+            <span>🎵 Choose Audio File</span>
+            <input type="file" id="bgMusicFileInput" accept="audio/*">
+          </label>
+          <button type="button" class="btn ghost" id="clearCustomMusicBtn" style="padding:8px 10px; font-size:12px; display:none; color:#d93838; border-color:#ffcdd2;" title="Remove Custom Audio">❌</button>
+        </div>
+        <small id="musicFileInfo" style="font-size:10px; color:var(--p-color); display:block; margin-top:4px; font-style:italic;">Maximum allowed file size: 3MB (.mp3, .wav, .m4a)</small>
+      </div>
+    </div>
+
+    <hr class="switcher-divider">
+
+    <!-- 7. Bright Action Attribution Button -->
+    <div style="margin-top: 14px;">
+      <a href="https://github.com/rTechCoding" target="_blank" rel="noopener noreferrer" class="rtech-attribution-btn">
+        rTechCoding ✨
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Toast Alert -->
+  <div class="toast" id="toast">Your Teacher's Day card is ready! 🎉</div>
+
+  <!-- External JavaScript Logic -->
+  <script src="js/security.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/audio.js"></script>
+</body>
+</html>
