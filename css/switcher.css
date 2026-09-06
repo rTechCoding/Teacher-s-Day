@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Style Switcher Drawer & Site Customization Stylesheet (css/switcher.css)
+   ========================================================================== */
+
+/* Floating Right-Side Action Button */
+.style-switcher-toggle {
+  position: fixed;
+  right: 0;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 2300;
+  background: linear-gradient(135deg, var(--purple, #7444ed), var(--pink, #ff4081));
+  color: #ffffff;
+  border-radius: 14px 0 0 14px;
+  padding: 10px 10px 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: -4px 8px 20px rgba(116, 68, 237, 0.4);
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-right: 0;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  user-select: none;
+}
+.style-switcher-toggle:hover {
+  padding-left: 16px;
+  box-shadow: -6px 12px 28px rgba(116, 68, 237, 0.6);
+}
+.gear-spin {
+  font-size: 18px;
+  display: inline-block;
+  transition: transform 0.6s ease;
+}
+.style-switcher-toggle:hover .gear-spin {
+  transform: rotate(90deg);
+}
+.toggle-text {
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Backdrop Overlay */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 33, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 2150;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Right-Side Sliding Panel Drawer */
+.style-switcher-drawer {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translate(100%, -50%);
+  width: min(325px, 86vw);
+  max-height: 86vh;
+  background: var(--bg-card, #ffffff);
+  box-shadow: -15px 25px 60px rgba(0, 0, 0, 0.35);
+  z-index: 2200;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow-y: auto;
+  border-radius: 24px 0 0 24px;
+  border: 2px solid var(--line, #e2dafa);
+  border-right: none;
+  padding: 24px 20px;
+}
+.style-switcher-drawer.open {
+  transform: translate(0, -50%);
+}
+
+.style-switcher-title {
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--purple, #7444ed);
+  display: inline-block;
+}
+.switcher-divider {
+  border: 0;
+  height: 1px;
+  background: var(--line, #e2dafa);
+  margin: 12px 0;
+}
+.switcher-section {
+  margin-bottom: 4px;
+}
+.switcher-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--p-color, #646c9a);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Color Swatches Grid */
+.swatch-drops-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.drop-swatch {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 2px solid #ffffff;
+}
+.drop-swatch:hover {
+  transform: scale(1.15);
+}
+.drop-swatch.active {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 3px var(--purple, #7444ed), 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Radio Option Rows */
+.radio-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink, #1f1938);
+  cursor: pointer;
+}
+.radio-option input[type="radio"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--purple, #7444ed);
+  cursor: pointer;
+}
+
+.hot-badge {
+  background: #ff2a2a;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 5px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.separator-options-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.sep-option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.sep-option input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--purple, #7444ed);
+}
+.sep-preview {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--purple, #7444ed);
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--bg-soft, #f7f2ff);
+  border: 1px solid var(--line, #e2dafa);
+}
+
+/* Animation Preset Cards */
+.anim-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.anim-card {
+  background: var(--bg-soft, #f7f2ff);
+  border: 2px solid var(--line, #e2dafa);
+  border-radius: 16px;
+  padding: 10px 4px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  user-select: none;
+}
+.anim-card .anim-icon {
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+.anim-card .anim-label {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--ink, #1f1938);
+}
+.anim-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--purple, #7444ed);
+}
+.anim-card.active {
+  background: linear-gradient(135deg, #8e5cf6, #e84f9b);
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(142, 92, 246, 0.4);
+}
+.anim-card.active .anim-icon { transform: scale(1.18); }
+.anim-card.active .anim-label { color: #ffffff; }
+
+/* Attribution Button */
+.rtech-attribution-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #ff5722, #ff7043);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  padding: 11px 16px;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+.rtech-attribution-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(255, 87, 34, 0.55);
+  color: #ffffff;
+}
+
+/* Boxed Layout Mode */
+body.boxed-layout { background: #0d0a21; }
+body.boxed-layout .container {
+  max-width: 1200px;
+  border-radius: 30px;
+  background: var(--bg-main, #ffffff);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+  padding: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 2px solid var(--line, #e2dafa);
+}

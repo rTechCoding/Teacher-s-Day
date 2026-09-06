@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Background Music & Custom Audio Player Styles (css/audio.css)
+   ========================================================================== */
+
+/* Music Status Badge in Style Switcher Drawer */
+.music-status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: var(--bg-soft);
+  color: var(--purple);
+  border: 1px solid var(--line);
+  transition: all 0.3s ease;
+}
+.music-status-badge.playing {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(116, 68, 237, 0.35);
+}
+
+/* Quick Floating / Navbar Audio Toggle Button */
+.music-quick-btn {
+  display: none !important;
+}
+.music-quick-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--purple);
+  background: var(--bg-card);
+}
+.music-quick-btn.playing {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(116, 68, 237, 0.4);
+  animation: pulseMusic 1.6s infinite alternate ease-in-out;
+}
+
+/* Music Volume Range Input Slider */
+#bgMusicVolSlider {
+  accent-color: var(--purple);
+  border-radius: 4px;
+}
+
+/* Music Pulse Animation Keyframes */
+@keyframes pulseMusic {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
+}
