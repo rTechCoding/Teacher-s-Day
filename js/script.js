@@ -2983,7 +2983,7 @@ function loadSavedPreferences() {
 // ==========================================
 // 20. Draggable Card Text & Add Custom Text Block Engine
 // ==========================================
-let isCardTextLocked = false;
+let isCardTextLocked = true;
 let activeDragTextEl = null;
 let dragTextStartX = 0;
 let dragTextStartY = 0;
@@ -2999,6 +2999,7 @@ let customTextBlocks = [];
 
 function applyTextTransforms() {
   $$(".draggable-card-text").forEach(el => {
+    el.classList.toggle("locked", isCardTextLocked);
     const textId = el.dataset.textId;
     if (textId && cardTextPositions[textId]) {
       const pos = cardTextPositions[textId];
@@ -3089,6 +3090,7 @@ function onTextDragEnd() {
 }
 
 $$(".draggable-card-text").forEach(el => {
+  el.classList.toggle("locked", isCardTextLocked);
   el.addEventListener("mousedown", onTextDragStart);
   el.addEventListener("touchstart", onTextDragStart, { passive: true });
 });
@@ -3143,8 +3145,13 @@ if ($("#lockCardTextBtn")) {
       el.classList.toggle("locked", isCardTextLocked);
     });
     const lockBtn = $("#lockCardTextBtn");
+    const langData = (typeof translations !== "undefined" && translations[currentLang]) ? translations[currentLang] : null;
     if (lockBtn) {
-      lockBtn.textContent = isCardTextLocked ? "🔒 Dragging Locked (Click to Unlock)" : "🔓 Dragging Enabled (Click to Lock)";
+      if (langData && langData.btnDragLock && langData.btnDragUnlock) {
+        lockBtn.textContent = isCardTextLocked ? langData.btnDragLock : langData.btnDragUnlock;
+      } else {
+        lockBtn.textContent = isCardTextLocked ? "🔒 Dragging Locked (Click to Unlock)" : "🔓 Dragging Enabled (Click to Lock)";
+      }
     }
     showToast(isCardTextLocked ? "Card text locked in place 🔒" : "Card text unlocked for dragging 🔓");
   });
