@@ -4,7 +4,7 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Helper Selectors & State Variables
+   1. Helper Selectors & State Variables 
    -------------------------------------------------------------------------- */
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
